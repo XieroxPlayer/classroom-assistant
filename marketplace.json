@@ -1,0 +1,9 @@
+{
+  "name": "classroom-assistant-marketplace",
+  "plugins": [
+    {
+      "name": "classroom-assistant",
+      "source": "./"
+    }
+  ]
+}
