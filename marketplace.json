@@ -1,5 +1,8 @@
 {
   "name": "classroom-assistant-marketplace",
+  "interface": {
+    "displayName": "Classroom Assistant"
+  },
   "plugins": [
     {
       "name": "classroom-assistant",
