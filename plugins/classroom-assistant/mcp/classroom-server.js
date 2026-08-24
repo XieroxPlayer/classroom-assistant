@@ -350,9 +350,7 @@ async function callTool(name, args) {
 }
 
 function sendMessage(payload) {
-  const body = Buffer.from(JSON.stringify(payload), "utf8");
-  process.stdout.write(`Content-Length: ${body.length}\r\n\r\n`);
-  process.stdout.write(body);
+  process.stdout.write(`${JSON.stringify(payload)}\n`);
 }
 
 function sendResult(id, result) {
@@ -397,20 +395,11 @@ async function handleMessage(message) {
 
 function drainInput() {
   while (true) {
-    const headerEnd = inputBuffer.indexOf("\r\n\r\n");
-    if (headerEnd === -1) return;
-    const header = inputBuffer.slice(0, headerEnd).toString("utf8");
-    const match = header.match(/Content-Length:\s*(\d+)/i);
-    if (!match) {
-      inputBuffer = inputBuffer.slice(headerEnd + 4);
-      continue;
-    }
-    const length = Number(match[1]);
-    const bodyStart = headerEnd + 4;
-    const bodyEnd = bodyStart + length;
-    if (inputBuffer.length < bodyEnd) return;
-    const body = inputBuffer.slice(bodyStart, bodyEnd).toString("utf8");
-    inputBuffer = inputBuffer.slice(bodyEnd);
+    const newline = inputBuffer.indexOf("\n");
+    if (newline === -1) return;
+    const body = inputBuffer.slice(0, newline).toString("utf8").trim();
+    inputBuffer = inputBuffer.slice(newline + 1);
+    if (!body) continue;
     Promise.resolve()
       .then(() => handleMessage(JSON.parse(body)))
       .catch((error) => sendError(null, error));
