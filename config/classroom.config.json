@@ -1,0 +1,11 @@
+{
+  "credentialsPath": "C:/Users/xiero/Downloads/client_secret_80755878224-2n6dpq0c5b4fj2alvuak4ip5a48il0sf.apps.googleusercontent.com.json",
+  "tokenPath": "./config/classroom-token.json",
+  "scopes": [
+    "https://www.googleapis.com/auth/classroom.courses.readonly",
+    "https://www.googleapis.com/auth/classroom.coursework.me.readonly",
+    "https://www.googleapis.com/auth/classroom.courseworkmaterials.readonly",
+    "https://www.googleapis.com/auth/classroom.announcements.readonly",
+    "https://www.googleapis.com/auth/classroom.student-submissions.me.readonly"
+  ]
+}

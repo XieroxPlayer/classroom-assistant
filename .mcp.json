@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "classroom-assistant": {
+      "command": "node",
+      "args": [
+        "mcp/classroom-server.js"
+      ]
+    }
+  }
+}

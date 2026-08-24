@@ -1,0 +1,28 @@
+{
+  "name": "classroom-assistant",
+  "version": "0.1.0",
+  "description": "Chat-based assistant for checking classroom assignments, due dates, and teaching materials.",
+  "author": {
+    "name": "Local developer"
+  },
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Classroom Assistant",
+    "shortDescription": "Check class work, due dates, and teacher files from chat.",
+    "longDescription": "Classroom Assistant helps turn classroom data into a concise chat view of upcoming assignments, missing work, due dates, and teaching materials shared by instructors.",
+    "developerName": "Local developer",
+    "category": "Education",
+    "capabilities": [
+      "Classroom planning",
+      "Assignment tracking",
+      "Document review"
+    ],
+    "defaultPrompt": [
+      "Check my upcoming classroom deadlines.",
+      "Summarize the teaching files from my class.",
+      "Show missing work by course."
+    ],
+    "brandColor": "#2563EB"
+  }
+}

@@ -1,0 +1,4 @@
+config/classroom-token.json
+config/*credentials*.json
+*.log
+node_modules/
