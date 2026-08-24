@@ -7,8 +7,14 @@
     {
       "name": "classroom-assistant",
       "source": {
-        "source": "local",
-        "path": "./plugins/classroom-assistant"
+        "source": "git-subdir",
+        "url": "https://github.com/XieroxPlayer/classroom-assistant.git",
+        "path": "./plugins/classroom-assistant",
+        "ref": "main"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
       },
       "category": "Education"
     }
