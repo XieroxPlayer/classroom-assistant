@@ -2,6 +2,7 @@ const fs = require("fs");
 const http = require("http");
 const path = require("path");
 const crypto = require("crypto");
+const os = require("os");
 
 const pluginRoot = path.resolve(__dirname, "..");
 const configPath = path.join(pluginRoot, "config", "classroom.config.json");
@@ -22,16 +23,23 @@ function writeJson(filePath, payload) {
 }
 
 function resolvePluginPath(rawPath) {
-  if (path.isAbsolute(rawPath)) return rawPath;
-  return path.resolve(pluginRoot, rawPath);
+  let expandedPath = rawPath;
+  if (rawPath === "~") {
+    expandedPath = os.homedir();
+  } else if (rawPath.startsWith("~/") || rawPath.startsWith("~\\")) {
+    expandedPath = path.join(os.homedir(), rawPath.slice(2));
+  }
+
+  if (path.isAbsolute(expandedPath)) return expandedPath;
+  return path.resolve(pluginRoot, expandedPath);
 }
 
 function loadConfig() {
   const config = readJson(configPath);
   return {
     ...config,
-    credentialsPath: resolvePluginPath(config.credentialsPath),
-    tokenPath: resolvePluginPath(config.tokenPath || "./config/classroom-token.json"),
+    credentialsPath: resolvePluginPath(process.env.CLASSROOM_CREDENTIALS_PATH || config.credentialsPath),
+    tokenPath: resolvePluginPath(process.env.CLASSROOM_TOKEN_PATH || config.tokenPath || "./config/classroom-token.json"),
   };
 }
 

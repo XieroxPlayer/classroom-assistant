@@ -14,7 +14,9 @@ Local Codex plugin for connecting chat to Google Classroom.
 1. Enable the Google Classroom API in Google Cloud Console.
 2. Create an OAuth client ID for a Desktop app.
 3. Download the OAuth JSON file.
-4. Update `config/classroom.config.json` if the OAuth JSON file is stored somewhere else.
+4. Store it as `~/.classroom-assistant/credentials.json`. On Windows, `~` is your user profile folder.
+   You can override this with `CLASSROOM_CREDENTIALS_PATH`; use `CLASSROOM_TOKEN_PATH` to override
+   the generated token location.
 5. Install or reload this plugin in Codex.
 
 ## First Authorization
@@ -29,4 +31,5 @@ The plugin should call `classroom_start_auth` and return a Google authorization 
 
 ## Security Note
 
-Do not commit or share OAuth credential JSON files or generated token files. The generated token is stored at `config/classroom-token.json`.
+Do not commit or share OAuth credential JSON files or generated token files. By default, the generated
+token is stored at `~/.classroom-assistant/classroom-token.json`.
