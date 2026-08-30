@@ -3,7 +3,8 @@
     "classroom-assistant": {
       "command": "node",
       "args": [
-        "mcp/classroom-server.js"
+        "-e",
+        "const fs=require('fs'),path=require('path'),os=require('os');const home=process.env.CODEX_HOME||path.join(os.homedir(),'.codex');const base=process.env.CLASSROOM_ASSISTANT_PLUGIN_ROOT||path.join(home,'plugins','cache','classroom-assistant-marketplace','classroom-assistant');const direct=path.join(base,'mcp','classroom-server.js');const candidates=fs.existsSync(direct)?[direct]:(fs.existsSync(base)?fs.readdirSync(base,{withFileTypes:true}).filter(entry=>entry.isDirectory()).map(entry=>path.join(base,entry.name,'mcp','classroom-server.js')).filter(file=>fs.existsSync(file)).sort((a,b)=>fs.statSync(b).mtimeMs-fs.statSync(a).mtimeMs):[]);if(!candidates.length)throw new Error('Classroom Assistant server not found under '+base);require(candidates[0]);"
       ]
     }
   }

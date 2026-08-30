@@ -1,6 +1,6 @@
 {
   "name": "classroom-assistant",
-  "version": "0.1.0+codex.20260830182847",
+  "version": "0.1.0+codex.20260830184221",
   "description": "Chat-based assistant for checking classroom assignments, due dates, and teaching materials.",
   "author": {
     "name": "Local developer"
